@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Posts - Merci pour la correction :-)</h1>
+      
+      <div class="form-group">
+        <input type="text" #title class="form-control mt-1" [(ngModel)]="newPostTitle" (keyup)="validate(title)" [ngClass]="{'error':!isValid && newPostTitle === ''}">
+        <textarea type="text" #content class="form-control mt-1" [(ngModel)]="newPostContent" (keyup)="validate(content)" [ngClass]="{'error':!isValid  && newPostContent === ''}"></textarea>
+        <button class="btn btn-light mt-1" (click)="addPost()" >Ajouter le post</button>
+      </div>
+      
+
+      <app-postlist [postList]="postList"></app-postlist>
+    </div>
+  </div>
+</div>
