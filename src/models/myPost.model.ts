@@ -1,11 +1,13 @@
 export class MyPost  {
+    id: number;
     title: string;
     content: string;
     loveIts: number;
     hateIts: number;
     created_at: Date;
 
-    constructor(t: string,c: string) {
+    constructor(i:number, t: string,c: string) {
+        this.id = i;
         this.title = t;
         this.content = c;
         this.loveIts = 0;

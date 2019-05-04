@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PostsService } from 'src/service/posts.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,13 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostlistitemComponent implements OnInit {
 
+  @Input() id: number;
   @Input() title: string;
   @Input() content: string;
   @Input() loveIts: number;
   @Input() hateIts: number;
   @Input() created_at: Date;
 
-  constructor() { }
+  constructor(private postsService:PostsService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -24,12 +27,18 @@ export class PostlistitemComponent implements OnInit {
   }
 
   addLove(){
-    this.loveIts ++;
-    console.log(this.loveIts);
+    this.postsService.addLove(this.id);
   }
 
   addHate(){
-    this.hateIts++;
+    this.postsService.addHate(this.id);
+  }
+
+  removePost(){
+    if(confirm("Etes-vous sûr de vouloir supprimer ce post?")) {
+      this.postsService.removePostById(this.id);
+      this.router.navigate(['posts']);
+    }
   }
 
 }

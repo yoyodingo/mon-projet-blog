@@ -2,13 +2,15 @@
   'list-group-item-success': getLovCount()>0,
   'list-group-item-danger': getLovCount()<0}">
 
-    <p class="my-date font-italic">{{ created_at | date :'short' }}</p>
+    <p class="my-date font-italic">{{ created_at | date :'dd/MM/yy HH:mm:ss' }}</p>
 
     <h3>{{ title }} </h3>
   <p>{{ content }}</p>
-  <button class="btn btn-success" (click)="addLove()" >Love it <span class="badge badge-light ml-2">{{loveIts}}</span></button>
-  <button class="btn btn-danger ml-1" (click)="addHate()">Don't Love it!!! <span class="badge badge-light ml-2">{{hateIts}}</span></button>
+  <button class="btn btn-success" (click)="addLove()" >Love it! <span class="badge badge-light ml-2">{{loveIts}}</span></button>
+  <button class="btn btn-warning ml-1" (click)="addHate()">Don't Love it... <span class="badge badge-light ml-2">{{hateIts}}</span></button>
   
     
+  <button class="btn btn-danger my-btn-delete" (click)="removePost()" >Remove</button>
+
 </li>
 
